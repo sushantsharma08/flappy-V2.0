@@ -21,9 +21,8 @@ router.post("/register",async(req,res)=>{
 
     await newUser.save();
 
-    res.json({
-        message:"user registered successfully"
-    })
+    res.json(
+        newUser)
 })
 
 router.post("/login", async (req,res)=>{
@@ -44,5 +43,15 @@ router.post("/login", async (req,res)=>{
     res.json({token,userID: user._id })
 })
 
+
+router.get("/user/:name",async (req,res)=>{
+
+    try {
+        const user = await UserModel.findOne({username:req.params.name});
+        res.json(user);
+    } catch (error) {
+        
+    }
+})
 
 export { router as UserRouter}
