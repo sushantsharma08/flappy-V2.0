@@ -16,6 +16,8 @@ const Login = () => {
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
   const [,setCookies]=useCookies(["access_token"])
+  // const navigate = useNavigate();
+
 
   const onSubmit = async () => {
     event.preventDefault();
@@ -31,8 +33,12 @@ const Login = () => {
 
       if (token) {
         alert("Login Successful");
+        window.localStorage.setItem("userId",userID)
         const score = await axios.get(`http://localhost:3001/score/${userID}`);
+        
         console.log(score);
+
+        // navigate("/");
       } else {
         alert("Login authentication failed")
       }
@@ -65,13 +71,15 @@ const Register = () => {
     event.preventDefault();
     try {
       // register User
-      await axios.post("http://localhost:3001/auth/register", {
+      const user= await axios.post("http://localhost:3001/auth/register", {
         username, password
-      });
+      }); 
+      console.log(user);
+      const userId= user.data._id
       // Create user Scorecard
-      // await axios.post("http://localhost:3001/score",{
-      //   name:username,score:0
-      // })
+      await axios.post(`http://localhost:3001/score`,{
+        name:username,score:0,userId
+      })
 
       alert("Registration Successful")
     } catch (error) {
