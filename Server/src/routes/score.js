@@ -5,8 +5,8 @@ import { UserModel } from "../models/User.js";
 const router = express.Router();
 
 router.post("/",async(req,res)=>{
- const {name,score}=req.body;
- const user =await UserModel.findOne({name});
+ const {name,score,userId}=req.body;
+ const user = await UserModel.findOne({name});
  const scoreCard = new ScoreModel(req.body);
  try {
     res.json(scoreCard)
@@ -30,12 +30,13 @@ router.get("/",async (req,res)=>{
 router.get("/:userId", async (req,res)=>{
 
     try {
-        const userScoreCard = await ScoreModel.findById(req.params.userId);
-        const Id = await userScoreCard.name;
-        const user = await UserModel.findById(Id);
-        res.json({
-            userScoreCard,user
-        })
+        // const userScoreCard = await ScoreModel.findById(req.params.userId);
+        const userScoreCard = await ScoreModel.findOne({name:req.params.userId});
+        // const Id = await userScoreCard.name;
+        // const user = await UserModel.findById(Id);
+        res.json(
+            userScoreCard
+        )
         
     } catch (error) {
         
