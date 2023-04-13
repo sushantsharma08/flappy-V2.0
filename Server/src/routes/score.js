@@ -19,9 +19,7 @@ router.post("/",async(req,res)=>{
 router.get("/",async (req,res)=>{
     try {
         const scoreCards =await ScoreModel.find({});
-        const userId= scoreCards.map((Sc)=>Sc.name);
-
-        res.json(userId)
+        res.json(scoreCards)
     } catch (error) {
         res.json(error)
     }
