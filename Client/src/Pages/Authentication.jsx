@@ -78,7 +78,7 @@ const Register = () => {
       const userId= user.data._id
       // Create user Scorecard
       await axios.post(`http://localhost:3001/score`,{
-        name:username,score:0,userId
+        name:username,score:5,userId
       })
 
       alert("Registration Successful")

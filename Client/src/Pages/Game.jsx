@@ -8,7 +8,6 @@ const Game = () => {
         <div className="game">
             
         </div>
-
         <Scoreboard/>
         
     </div>
