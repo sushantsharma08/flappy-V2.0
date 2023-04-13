@@ -1,5 +1,14 @@
 .game{
-  width: 80%;
+  flex: 2;
   height: 800px;
   border: 1px solid red;
+}
+.scoreboard{
+  flex: 0.5;
+  height: 800px;
+  border: 1px solid black;
+}
+.home__main{
+  display: flex;
+  width: 100vw;
 }
