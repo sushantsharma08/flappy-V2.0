@@ -7,7 +7,7 @@ const Scoreboard = () => {
     const getScores = () => {
         axios.get("http://localhost:3001/score").then((res) => {
             // descending order
-            res.data.sort((a,b)=>{
+            res.data.sort((a, b) => {
                 return b.score - a.score;
             })
             setScores(res.data);
@@ -33,15 +33,21 @@ const Scoreboard = () => {
 
             {scores.map((score) =>
                 <div className='card' key={score?._id}>
-                    <h3>{score?.name} </h3>
-                    <h2>{score?.score}</h2>
-                    
+                    <span className="name">
+                        <h3>{score?.name} </h3>
+                    </span>
+
+                    <span className="score">
+                        <h2>{score?.score}</h2>
+                    </span>
+
+
                 </div>
             )}
 
             <br /><br /><br />
 
-            {scores.filter((score)=>{
+            {scores.filter((score) => {
                 score.score
             })}
 
