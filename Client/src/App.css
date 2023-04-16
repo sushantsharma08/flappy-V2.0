@@ -84,13 +84,13 @@ hr{
 .auth_input{
   background-color: #A7AFEE;
   padding-inline:0.5rem ;
-  color: aliceblue;
+  color: rgb(67, 10, 224);
   width: 200px;
   border: 0px;
   outline: none;
 }
 .auth_label{
-  color: #1F4964;
+  color: #3e88b6;
   margin-right: 0.3rem;
 }
 .auth_form{
