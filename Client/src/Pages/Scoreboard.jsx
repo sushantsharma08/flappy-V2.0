@@ -7,7 +7,7 @@ const Scoreboard = () => {
     const userId = useGetUserId();
 
     const getScores = () => {
-        axios.get("http://localhost:3001/score").then((res) => {
+        axios.get("https://flappy-v2-back.vercel.app/score").then((res) => {
             // descending order
             res.data.sort((a, b) => {
                 return b.score - a.score;

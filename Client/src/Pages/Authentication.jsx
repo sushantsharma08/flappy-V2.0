@@ -22,7 +22,7 @@ const Login = () => {
   const onSubmit = async () => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
+      const response = await axios.post("https://flappy-v2-back.vercel.app/auth/login", {
         username, password
       });
 
@@ -34,7 +34,7 @@ const Login = () => {
       if (token) {
         alert("Login Successful");
         window.localStorage.setItem("userId", userID)
-        const score = await axios.get(`http://localhost:3001/score/${userID}`);
+        const score = await axios.get(`https://flappy-v2-back.vercel.app/score/${userID}`);
 
         console.log(score);
 
@@ -71,13 +71,13 @@ const Register = () => {
     event.preventDefault();
     try {
       // register User
-      const user = await axios.post("http://localhost:3001/auth/register", {
+      const user = await axios.post("https://flappy-v2-back.vercel.app/auth/register", {
         username, password
       });
       console.log(user);
       const userId = user.data._id
       // Create user Scorecard
-      await axios.post(`http://localhost:3001/score`, {
+      await axios.post(`https://flappy-v2-back.vercel.app/score`, {
         name: username, score: 5, userId
       })
 
