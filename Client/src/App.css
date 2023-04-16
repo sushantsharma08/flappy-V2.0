@@ -7,8 +7,8 @@
 }
 
 .game{
-  flex: 1;
-  margin-inline: 4rem;
+  width: 90vw;
+  /* margin-inline: 4rem; */
   height: 800px;
   border: 1px solid red;
 }
@@ -52,4 +52,76 @@ ul{
   outline: none;
   color: greenyellow;
   border: 0px;
+}
+hr{
+  border: 0px;
+  outline: none;
+  height: 2px;
+  background-color: #8D5988;
+}
+.authentication{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth_card{
+  padding-bottom:3rem ;
+  padding-inline: 2rem;
+  border: 2px solid #abbdff;
+  margin: 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+.auth_title{
+  padding-top: 2rem;
+  padding-bottom: 0.9rem;
+  font-size: larger;
+}
+.auth_inputFields{
+  margin-block: 1rem;
+}
+.auth_input{
+  background-color: #A7AFEE;
+  padding-inline:0.5rem ;
+  color: aliceblue;
+  width: 200px;
+  border: 0px;
+  outline: none;
+}
+.auth_label{
+  color: #1F4964;
+  margin-right: 0.3rem;
+}
+.auth_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.auth_button{
+  margin-top:3rem;
+  padding-block:0.3rem ;
+  border: 0px;
+  /* 1F4964 */
+  background-color: #5a57af;
+  /* background-color: blueviolet; */
+}
+
+@media screen and (max-width:560px) {
+  .scoreboard{
+    width: 90vw;
+  }
+  .game{
+    width: 100vw;
+  }
+  .navbar nav ul{
+    display: flex;
+    flex-direction: column;
+  }
+  .li{
+    margin: 0.5rem;
+  }
+  .authentication{
+    flex-direction: column;
+  }
 }
