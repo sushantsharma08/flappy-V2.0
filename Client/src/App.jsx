@@ -5,17 +5,25 @@ import Navbar from './components/Navbar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Scoreboard from './Pages/Scoreboard'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const client = new QueryClient();
+
 function App() {
+
   return (
     <div className="App">
-      <Router>
-        <Navbar/>
-        <Routes>
-          <Route path="/auth"  element={<Authentication/>}/>
-          <Route path="/scoreboard"  element={<Scoreboard/>}/>
-          <Route path="/" element={<Game />}/>
-        </Routes>
-      </Router>
+      <QueryClientProvider client={client}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/auth" element={<Authentication />} />
+            <Route path="/scoreboard" element={<Scoreboard />} />
+            <Route path="/" element={<Game />} />
+          </Routes>
+        </Router>
+      </QueryClientProvider>
+
     </div>
   )
 }

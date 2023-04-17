@@ -125,7 +125,7 @@ const Form = (props) => {
 
             <input
               className='auth_input'
-              type="text"
+              type="password"
               id='password'
               name='password'
               onChange={(e) => { props.setpassword(e.target.value) }}
@@ -133,8 +133,6 @@ const Form = (props) => {
             />
           </div>
         </div>
-
-
         <button className='auth_button' type="submit">{props.title}</button>
       </form>
     </div >

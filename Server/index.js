@@ -20,5 +20,5 @@ mongoose.connect(`mongodb+srv://${process.env.USERNAME_DB}:${process.env.PASSWOR
 
 
 app.listen(port,()=>{
-    console.log('Server up!');
+    console.log("Server Up!");
 })
