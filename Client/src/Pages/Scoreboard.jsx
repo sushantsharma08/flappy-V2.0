@@ -27,8 +27,8 @@ const Scoreboard = () => {
     const { data: scores, isLoading, refetch } = useQuery(
         ["scores"], () => {
             return axios.get(
-                // "https://flappy-v2-back.vercel.app/score"
-                "http://localhost:3001/score"
+                "https://flappy-v2-back.vercel.app/score"
+                // "http://localhost:3001/score"
 
             ).then((res) =>
             // descending order
