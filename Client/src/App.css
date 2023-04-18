@@ -1,16 +1,15 @@
 *{
   margin: 0;
   padding: 0;
-  background-color: rgb(0, 0, 0);
   font-size: x-large;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
+.App{
+  min-height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
 .game{
   width: 90vw;
-  /* margin-inline: 4rem; */
-  height: 800px;
-  border: 1px solid red;
 }
 .scoreboard{
   /* height: 800px; */
@@ -58,6 +57,7 @@ ul{
   outline: none;
   color: greenyellow;
   border: 0px;
+  background-color: black;
 }
 .logout{
   background-color: #5bc694;
@@ -135,4 +135,10 @@ hr{
   .authentication{
     flex-direction: column;
   }
+}
+.back{
+  background-image: url("./assets/background.png");
+}
+.bird{
+  background-image:url("./assets/yellowbird.png");
 }
