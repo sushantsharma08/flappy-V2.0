@@ -10,26 +10,46 @@ const isStart = true;
 
 const Game = () => {
   const [birdpos, setBirdpos] = useState(300);
+  const [isStart, setIsStart] = useState(false)
+  // const [birdRotate,setBirdRotate] = useState(0)
+
+  const handler=()=>{
+   if(!isStart) setIsStart(true)
+    if(birdpos<BIRD_HEIGHT+60 )setBirdpos(50);
+    setBirdpos((birdpos)=>birdpos-50);
+    // setBirdRotate(-50);
+  }
 
   useEffect(() => {
     let intVal;
     if(isStart&&birdpos< WALL_HEIGHT - BIRD_HEIGHT){
       intVal = setInterval(()=>{
-        setBirdpos((birdpos)=>birdpos+GRAVITY)
+        setBirdpos((birdpos)=>birdpos+GRAVITY);
       },24)
+      // setBirdRotate(0);
     }
     return()=> clearInterval(intVal)
   });
-  const handler=()=>{
-    if(birdpos<BIRD_HEIGHT+60 )setBirdpos(50)
-    setBirdpos((birdpos)=>birdpos-50)
-  }
+
+
+
   return (
     <div className='home__main'>
       <div className="game">
         <Home onClick={handler}>
-          <Background className='back' height={WALL_HEIGHT} width={WALL_WIDTH}>
-            <Bird className="bird" height={BIRD_HEIGHT} width={BIRD_WIDTH} top={birdpos} left={100}/>
+
+          <Background className='back' 
+          height={WALL_HEIGHT} 
+          width={WALL_WIDTH}>
+
+            <Bird className="bird" 
+            height={BIRD_HEIGHT} 
+            width={BIRD_WIDTH} 
+            top={birdpos} 
+            left={100} 
+            // rotate={birdRotate}
+            />
+           {!isStart && <Start>click to start</Start>}
           </Background>
         </Home>
       </div>
@@ -64,4 +84,17 @@ width: ${props => props.width}px;
 height:${props => props.height}px;
 top:${props => props.top}px;
 left:${props => props.left}px;
+// transform: rotate(${props=>props.rotate}deg);
+`;
+
+const Start = styled.div`
+  padding:1rem;
+  padding-inline:1.5rem;
+  background-color:black;
+  color:white;
+  max-width:140px;
+  position:absolute;
+  top:40%;
+  left:35%;
+  border-radius:20px
 `;
