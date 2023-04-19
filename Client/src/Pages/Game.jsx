@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 
 const WALL_HEIGHT = 600;
@@ -13,22 +13,22 @@ const Game = () => {
   const [isStart, setIsStart] = useState(false)
   // const [birdRotate,setBirdRotate] = useState(0)
 
-  const handler=()=>{
-   if(!isStart) setIsStart(true)
-    if(birdpos<BIRD_HEIGHT+60 )setBirdpos(50);
-    setBirdpos((birdpos)=>birdpos-50);
+  const handler = () => {
+    if (!isStart) setIsStart(true)
+    if (birdpos < BIRD_HEIGHT + 60) setBirdpos(50);
+    setBirdpos((birdpos) => birdpos - 50);
     // setBirdRotate(-50);
   }
 
   useEffect(() => {
     let intVal;
-    if(isStart&&birdpos< WALL_HEIGHT - BIRD_HEIGHT){
-      intVal = setInterval(()=>{
-        setBirdpos((birdpos)=>birdpos+GRAVITY);
-      },24)
+    if (isStart && birdpos < WALL_HEIGHT - BIRD_HEIGHT) {
+      intVal = setInterval(() => {
+        setBirdpos((birdpos) => birdpos + GRAVITY);
+      }, 24)
       // setBirdRotate(0);
     }
-    return()=> clearInterval(intVal)
+    return () => clearInterval(intVal)
   });
 
 
@@ -38,18 +38,18 @@ const Game = () => {
       <div className="game">
         <Home onClick={handler}>
 
-          <Background className='back' 
-          height={WALL_HEIGHT} 
-          width={WALL_WIDTH}>
+          <Background className='back'
+            height={WALL_HEIGHT}
+            width={WALL_WIDTH}>
 
-            <Bird className="bird" 
-            height={BIRD_HEIGHT} 
-            width={BIRD_WIDTH} 
-            top={birdpos} 
-            left={100} 
+            <Bird className="bird"
+              height={BIRD_HEIGHT}
+              width={BIRD_WIDTH}
+              top={birdpos}
+              left={100}
             // rotate={birdRotate}
             />
-           {!isStart && <Start>click to start</Start>}
+            {!isStart && <Start>click to start</Start>}
           </Background>
         </Home>
       </div>
@@ -68,8 +68,8 @@ const Home = styled.div`
   align-items:center;
   margin-top:2rem
   `;
-  
-  const Background = styled.div`
+
+const Background = styled.div`
   position:relative;
   background-repeat:no-repeat;
   background-size: ${props => props.width}px ${props => props.height}px ;
@@ -84,7 +84,7 @@ width: ${props => props.width}px;
 height:${props => props.height}px;
 top:${props => props.top}px;
 left:${props => props.left}px;
-// transform: rotate(${props=>props.rotate}deg);
+// transform: rotate(${props => props.rotate}deg);
 `;
 
 const Start = styled.div`
