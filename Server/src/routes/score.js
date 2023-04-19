@@ -28,10 +28,21 @@ router.get("/",async (req,res)=>{
 router.get("/:userId", async (req,res)=>{
 
     try {
-        // const userScoreCard = await ScoreModel.findById(req.params.userId);
-        const userScoreCard = await ScoreModel.findOne({name:req.params.userId});
-        // const Id = await userScoreCard.name;
-        // const user = await UserModel.findById(Id);
+        const userScoreCard = await ScoreModel.findOne({userId:req.params.userId});
+        res.json(
+            userScoreCard.score
+        )
+        
+    } catch (error) {
+        
+    }
+})
+
+router.patch("/:userId", async (req,res)=>{
+    const {score}=req.body;
+    const userScoreCard = await ScoreModel.findOneAndUpdate({userId:req.params.userId},req.body);
+
+    try {
         res.json(
             userScoreCard
         )
