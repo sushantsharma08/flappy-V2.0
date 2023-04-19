@@ -117,7 +117,9 @@ hr{
   background-color: #5a57af;
   /* background-color: blueviolet; */
 }
-
+.obj{
+  background-image: url(./assets/pipe-green.png);
+}
 @media screen and (max-width:560px) {
   .scoreboard{
     width: 90vw;
