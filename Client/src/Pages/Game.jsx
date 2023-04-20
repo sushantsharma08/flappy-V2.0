@@ -12,8 +12,8 @@ const BIRD_HEIGHT = 30;
 const BIRD_WIDTH = 40;
 const GRAVITY = 8;
 const OBJ_WIDTH = 52;
-const OBJ_GAP=160;
-const OBJ_SPEED=5;
+const OBJ_GAP = 160;
+const OBJ_SPEED = 5;
 
 const Game = () => {
   const [birdpos, setBirdpos] = useState(300);
@@ -22,14 +22,13 @@ const Game = () => {
   const [objPos, setobjPos] = useState(WALL_WIDTH)
   const [Score, setScore] = useState(0);
   const [HighScore, setHighScore] = useState(0);
-  const [cookies, setCookies] = useCookies(["access_token"]);
+  const [cookies, setCookies] = useCookies(["access_token"]); 
 
   const handler = () => {
     if (!isStart) setIsStart(true)
     if (birdpos < BIRD_HEIGHT + 70) setBirdpos(70);
     setBirdpos((birdpos) => birdpos - 70);
-    // setBirdRotate(-50);
-  }
+  }  
 
   useEffect(() => {
     let intVal;
@@ -37,62 +36,61 @@ const Game = () => {
       intVal = setInterval(() => {
         setBirdpos((birdpos) => birdpos + GRAVITY);
       }, 24)
-      // setBirdRotate(0);
     }
     return () => clearInterval(intVal)
   });
 
-useEffect(() => {
-  let objVal
-  if(isStart && objPos >= -OBJ_WIDTH){
-    objVal = setInterval(() => {
-      setobjPos((objPos)=>objPos-OBJ_SPEED)
-    }, 35);
-    return () => {
-      clearInterval(objVal);
-    };
-  }else{
-    if (isStart) setScore((score) => score + 1);
-    setobjPos(WALL_WIDTH);
-    setobjHeight(Math.floor(Math.random() * (WALL_HEIGHT - OBJ_GAP)));
-  }
-},[isStart, objPos]);
-
-useEffect(() => {
-  let topObj = birdpos >= 0 && birdpos < objHeight;
-  let bottomObj =
-    birdpos <= WALL_HEIGHT &&
-    birdpos >=
-      WALL_HEIGHT - (WALL_HEIGHT - OBJ_GAP - objHeight) - BIRD_HEIGHT;
-  if (
-    objPos >= OBJ_WIDTH &&
-    objPos <= OBJ_WIDTH + 83 &&
-    (topObj || bottomObj) 
-  ) {
-    if (Score>=HighScore) {
-      setHighScore(Score);
-      console.log(HighScore);
+  useEffect(() => {
+    let objVal
+    if (isStart && objPos >= -OBJ_WIDTH) {
+      objVal = setInterval(() => {
+        setobjPos((objPos) => objPos - OBJ_SPEED)
+      }, 35);
+      return () => {
+        clearInterval(objVal);
+      };
+    } else {
+      if (isStart) setScore((score) => score + 1);
+      setobjPos(WALL_WIDTH);
+      setobjHeight(Math.floor(Math.random() * (WALL_HEIGHT - OBJ_GAP)));
     }
-    setIsStart(false);
-    setBirdpos(300);
-    updateScore();
-    setScore(0);
-  }
-}, [isStart, birdpos, objHeight, objPos]);
+  }, [isStart, objPos]);
 
-const updateScore= ()=>{
-  if (cookies.access_token) {
-    const userId = useGetUserId();
+  useEffect(() => {
+    let topObj = birdpos >= 0 && birdpos < objHeight;
+    let bottomObj =
+      birdpos <= WALL_HEIGHT &&
+      birdpos >=
+      WALL_HEIGHT - (WALL_HEIGHT - OBJ_GAP - objHeight) - BIRD_HEIGHT;
+    if (
+      objPos >= OBJ_WIDTH &&
+      objPos <= OBJ_WIDTH + 60 &&
+      (topObj || bottomObj)
+    ) {
+      if (Score >= HighScore) {
+        setHighScore(Score);
+        console.log(HighScore);
+      }
+      setIsStart(false);
+      setBirdpos(300);
+      updateScore();
+      setScore(0);
+    }
+  }, [isStart, birdpos, objHeight, objPos]);
 
-    axios.get(`https://flappy-v2-back.vercel.app/score/${userId}`).then((res)=>{
-      res.data;
-      if (res.data<HighScore) {
-        const res =  axios.patch(`https://flappy-v2-back.vercel.app/score/${userId}`,{score:HighScore});
-         console.log(res);
-       }
-    })
+  const updateScore = () => {
+    if (cookies.access_token) {
+      const userId = useGetUserId();
+
+      axios.get(`https://flappy-v2-back.vercel.app/score/${userId}`).then((res) => {
+        res.data;
+        if (res.data < HighScore) {
+          const res = axios.patch(`https://flappy-v2-back.vercel.app/score/${userId}`, { score: HighScore });
+          console.log(res);
+        }
+      })
+    }
   }
-}
   return (
     <div className='home__main'>
       <div className="game">
@@ -116,11 +114,10 @@ const updateScore= ()=>{
               width={BIRD_WIDTH}
               top={birdpos}
               left={80}
-            // rotate={birdRotate}
             />
             <Obj
               className='obj'
-              height={WALL_HEIGHT-objHeight-OBJ_GAP}
+              height={WALL_HEIGHT - objHeight - OBJ_GAP}
               width={OBJ_WIDTH}
               top={WALL_HEIGHT - (objHeight + (WALL_HEIGHT - OBJ_GAP - objHeight))}
               left={objPos}
@@ -129,12 +126,12 @@ const updateScore= ()=>{
             {!isStart && <Start>click to start</Start>}
           </Background>
         </Home>
-          <ScoreShow>
-           Score: {Score}
-          </ScoreShow>
-          <HighScoreShow>
-           High Score: {HighScore}
-          </HighScoreShow>
+        <ScoreShow>
+          Score: {Score}
+        </ScoreShow>
+        <HighScoreShow>
+          High Score: {HighScore}
+        </HighScoreShow>
       </div>
 
     </div>
@@ -152,8 +149,8 @@ const Home = styled.div`
   margin-top:2rem;
   flex-direction:column;
   `;
-
-const Background = styled.div`
+  
+  const Background = styled.div`
   position:relative;
   background-repeat:no-repeat;
   background-size: ${props => props.width}px ${props => props.height}px ;
@@ -169,7 +166,7 @@ width: ${props => props.width}px;
 height:${props => props.height}px;
 top:${props => props.top}px;
 left:${props => props.left}px;
-// transform: rotate(${props => props.rotate}deg);
+transition:0.1s;
 `;
 
 const Start = styled.div`
