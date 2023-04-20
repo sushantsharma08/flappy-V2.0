@@ -78,7 +78,7 @@ const Register = () => {
       const userId = user.data._id
       // Create user Scorecard
       await axios.post(`https://flappy-v2-back.vercel.app/score`, {
-        name: username, score: 5, userId
+        name: username, score: 0, userId
       })
 
       alert("Registration Successful")
