@@ -80,17 +80,17 @@ useEffect(() => {
   }
 }, [isStart, birdpos, objHeight, objPos]);
 
-const updateScore=()=>{
+const updateScore= ()=>{
   if (cookies.access_token) {
     const userId = useGetUserId();
-    const prevScore= axios.get(`https://flappy-v2-back.vercel.app/score/${userId}`).then((res)=>{
+
+    const prevScore=  axios.get(`https://flappy-v2-back.vercel.appscore/${userId}`).then((res)=>{
       res.data;
-      console.log(res.data);
-      if (prevScore<HighScore) {
-        axios.patch(`https://flappy-v2-back.vercel.app/score/${userId}`,{score:[HighScore]});
-      }
+      if (res.data<HighScore) {
+        const res =  axios.patch(`https://flappy-v2-back.vercel.appscore/${userId}`,{score:HighScore});
+         console.log(res);
+       }
     })
-    console.log(prevScore);
   }
 }
   return (
