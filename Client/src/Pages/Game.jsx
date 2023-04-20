@@ -84,10 +84,10 @@ const updateScore= ()=>{
   if (cookies.access_token) {
     const userId = useGetUserId();
 
-    const prevScore=  axios.get(`https://flappy-v2-back.vercel.appscore/${userId}`).then((res)=>{
+    axios.get(`https://flappy-v2-back.vercel.app/score/${userId}`).then((res)=>{
       res.data;
       if (res.data<HighScore) {
-        const res =  axios.patch(`https://flappy-v2-back.vercel.appscore/${userId}`,{score:HighScore});
+        const res =  axios.patch(`https://flappy-v2-back.vercel.app/score/${userId}`,{score:HighScore});
          console.log(res);
        }
     })
