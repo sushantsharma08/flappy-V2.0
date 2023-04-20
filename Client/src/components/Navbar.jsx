@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { Link } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from "react-router-dom"
+import {FaBars,FaTimes} from "react-icons/fa"
 
 const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
@@ -12,10 +13,15 @@ const Navbar = () => {
     window.localStorage.removeItem("userId");
     navigate("/auth")
   }
+  const navRef = useRef();
+
+  const showNavbar=()=>{
+    navRef.current.classList.toggle("responsive_nav")
+  }
 
   return (
     <div className='navbar'>
-        <nav>
+        <nav ref={navRef}>
             <ul>
                 <Link className='li' to="/">Game</Link>
                 <Link className='li' to="/scoreboard">Scoreboard</Link>
@@ -28,7 +34,13 @@ const Navbar = () => {
                 )
                 }
             </ul>
+            <button className='nav-btn nav-close-btn' onClick={showNavbar}>
+            <FaTimes/>
+            </button>
         </nav>
+            <button className='nav-btn' onClick={showNavbar}>
+            <FaBars/>
+            </button>
     </div>
   )
 }
