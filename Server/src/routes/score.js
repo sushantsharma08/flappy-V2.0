@@ -41,7 +41,6 @@ router.get("/:userId", async (req,res)=>{
 router.patch("/:userId", async (req,res)=>{
     const {score}=req.body;
     const userScoreCard = await ScoreModel.findOneAndUpdate({userId:req.params.userId},req.body);
-
     try {
         res.json(
             userScoreCard
