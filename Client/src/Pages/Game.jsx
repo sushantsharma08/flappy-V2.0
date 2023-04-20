@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
+import axios from "axios";
+import { useGetUserId } from '../hooks/useGetUserId';
+import { useCookies } from 'react-cookie'
+
+
 
 const WALL_HEIGHT = 600;
 const WALL_WIDTH = 400;
@@ -16,8 +21,8 @@ const Game = () => {
   const [objHeight, setobjHeight] = useState(0)
   const [objPos, setobjPos] = useState(WALL_WIDTH)
   const [Score, setScore] = useState(0);
-  const [HighScore, setHighScore] = useState(0)
-  // const [birdRotate,setBirdRotate] = useState(0)
+  const [HighScore, setHighScore] = useState(0);
+  const [cookies, setCookies] = useCookies(["access_token"]);
 
   const handler = () => {
     if (!isStart) setIsStart(true)
@@ -59,10 +64,9 @@ useEffect(() => {
     birdpos <= WALL_HEIGHT &&
     birdpos >=
       WALL_HEIGHT - (WALL_HEIGHT - OBJ_GAP - objHeight) - BIRD_HEIGHT;
-
   if (
     objPos >= OBJ_WIDTH &&
-    objPos <= OBJ_WIDTH + 78 &&
+    objPos <= OBJ_WIDTH + 83 &&
     (topObj || bottomObj) 
   ) {
     if (Score>=HighScore) {
@@ -71,11 +75,24 @@ useEffect(() => {
     }
     setIsStart(false);
     setBirdpos(300);
+    updateScore();
     setScore(0);
   }
 }, [isStart, birdpos, objHeight, objPos]);
 
-
+const updateScore=()=>{
+  if (cookies.access_token) {
+    const userId = useGetUserId();
+    const prevScore= axios.get(`https://flappy-v2-back.vercel.app/score/${userId}`).then((res)=>{
+      res.data;
+      console.log(res.data);
+      if (prevScore<HighScore) {
+        axios.patch(`https://flappy-v2-back.vercel.app/score/${userId}`,{score:[HighScore]});
+      }
+    })
+    console.log(prevScore);
+  }
+}
   return (
     <div className='home__main'>
       <div className="game">
