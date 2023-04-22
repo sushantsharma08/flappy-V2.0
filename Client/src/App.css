@@ -51,6 +51,13 @@
   margin-inline-start: 3rem;
   align-items: center;
 }
+.nav_title{
+  font-size: 26px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(-45deg,#b5e48c, #99d98c,#76c893,#34a0a4,#168aad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 ul{
   margin-right: 5rem;
 }
