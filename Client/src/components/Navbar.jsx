@@ -21,8 +21,8 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <div>
-        Flappy
+      <div style={{color:"#b5e48c"}}>
+        Flappy Bird
       </div>
         <nav ref={navRef}>
             <ul>
