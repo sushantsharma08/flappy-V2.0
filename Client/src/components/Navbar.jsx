@@ -21,6 +21,9 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
+      <div>
+        Flappy
+      </div>
         <nav ref={navRef}>
             <ul>
                 <Link className='li' to="/">Game</Link>
