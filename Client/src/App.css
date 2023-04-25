@@ -13,15 +13,10 @@
   width: 90vw;
 }
 .scoreboard{
-  /* height: 800px; */
-  /* max-height: 400px;
-  overflow: hidden; */
   height: 70vh;
   width: 50vw;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-
 }
 ::-webkit-scrollbar{
   width:7px
@@ -151,6 +146,42 @@ hr{
   background-color: #5a57af;
   /* background-color: blueviolet; */
 }
+.score_list{
+  height: 70vh;
+  width: 50vw; 
+  overflow-y: scroll;
+}
+
+.scoreboard {
+  position: relative;
+  z-index: 0; /* We force a stacking context */
+  background-color: #000000;
+}
+/* Creates the shadow */
+.scoreboard::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: -1px;
+  transform: translate(1px, 8px);
+  background: linear-gradient(-185deg,#b5e48c  , #5bc694 , #3e88b6,#5a57af);
+  filter: blur(10px);
+}
+/* Reproduces the main element styles */
+.scoreboard::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  /* Inherit all the decorations defined on the main element */
+  background: inherit;
+  border: inherit;
+  box-shadow: inherit;
+}
+
+
+
+
 .obj{
   background-image: url(./assets/pipe-green.png);
 }

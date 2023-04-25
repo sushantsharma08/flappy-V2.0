@@ -35,8 +35,13 @@ const Scoreboard = () => {
             <div className='scoreboard' style={{ color: "green", textAlign: "center" }}>
 
 
-                <div style={{ backdropFilter:"blur 2px"}}>
-                    <div style={{ position: "fixed", width: "50vw", right: "47%", marginTop: "20px", background: "#6380e3", padding: "0.5rem", margin: "auto", left: "25%", color: "rgb(80, 100, 100)", fontWeight: "900", borderRadius: "10px", fontSize: "larger" }}>
+                <div 
+                style={{
+                    // border:"1px solid red",
+                    marginTop:"0.1rem"
+                }} 
+                >
+                    <div style={{ position: "sticky", right: "47%", marginTop: "20px", background: "#6380e3", padding: "0.5rem", margin: "auto", left: "25%", color: "rgb(80, 100, 100)", fontWeight: "900", borderRadius: "10px", fontSize: "larger" }}>
                         Scoreboard
                     </div>
                 </div>
@@ -46,10 +51,10 @@ const Scoreboard = () => {
                 <br />
                 <br />
 
-                <div style={{ border: "2px solid #5058946e", paddingBlock: "2rem" }}>
+                <div className='score_list'>
 
                     {scores.map((score, index) =>
-                        <div className='card' style={{ border: score.userId === userId ? "1px solid green" : "default" }} key={score?._id}>
+                        <div className='card' style={{ backgroundColor:"black", border: score.userId === userId ? "1px solid green" : "default" }} key={score?._id}>
                             <span >{index + 1}</span>
                             <span className="name">
                                 <h3>{score?.name} </h3>
