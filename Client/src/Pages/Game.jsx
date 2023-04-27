@@ -24,8 +24,6 @@ const Game = () => {
   const [Score, setScore] = useState(0);
   const [HighScore, setHighScore] = useState(0);
   const [cookies, setCookies] = useCookies(["access_token"]); 
-  
-c
   const handler = () => {
     if (!isStart) setIsStart(true)
     if (birdpos < BIRD_HEIGHT + 70) setBirdpos(70);
