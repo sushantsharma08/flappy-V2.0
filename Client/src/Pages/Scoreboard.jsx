@@ -41,7 +41,7 @@ const Scoreboard = () => {
                     marginTop:"0.1rem"
                 }} 
                 >
-                    <div style={{ position: "sticky", right: "47%", marginTop: "20px", background: "#6380e3", padding: "0.5rem", margin: "auto", left: "25%", color: "rgb(80, 100, 100)", fontWeight: "900", borderRadius: "10px", fontSize: "larger" }}>
+                    <div style={{ position: "sticky", right: "47%", marginTop: "20px", background: "rgb(99 206 227 / 6%)", padding: "0.5rem", margin: "auto", left: "25%", color: "rgb(80, 100, 100)", fontWeight: "900", borderRadius: "10px", fontSize: "larger" }}>
                         Scoreboard
                     </div>
                 </div>
