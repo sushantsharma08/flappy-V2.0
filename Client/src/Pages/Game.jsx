@@ -3,8 +3,6 @@ import styled from "styled-components"
 import axios from "axios";
 import { useGetUserId } from '../hooks/useGetUserId';
 import { useCookies } from 'react-cookie'
-c
-
 
 
 const WALL_HEIGHT = 600;
