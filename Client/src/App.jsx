@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Scoreboard from './Pages/Scoreboard'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ReactGA from "react-ga";
+
+const   TRACKING_ID  = "G-SFH1J85Y6T;"
+ReactGA.initialize(TRACKING_ID);
 
 const client = new QueryClient();
 

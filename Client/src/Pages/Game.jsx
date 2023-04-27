@@ -3,6 +3,7 @@ import styled from "styled-components"
 import axios from "axios";
 import { useGetUserId } from '../hooks/useGetUserId';
 import { useCookies } from 'react-cookie'
+c
 
 
 
@@ -15,6 +16,8 @@ const OBJ_WIDTH = 52;
 const OBJ_GAP = 160;
 const OBJ_SPEED = 5;
 
+
+
 const Game = () => {
   const [birdpos, setBirdpos] = useState(300);
   const [isStart, setIsStart] = useState(false)
@@ -23,7 +26,8 @@ const Game = () => {
   const [Score, setScore] = useState(0);
   const [HighScore, setHighScore] = useState(0);
   const [cookies, setCookies] = useCookies(["access_token"]); 
-
+  
+c
   const handler = () => {
     if (!isStart) setIsStart(true)
     if (birdpos < BIRD_HEIGHT + 70) setBirdpos(70);

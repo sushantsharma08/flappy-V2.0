@@ -2,11 +2,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useGetUserId } from '../hooks/useGetUserId';
 import { useQuery } from '@tanstack/react-query'
-
+import ReactGA from "react-ga";
 
 const Scoreboard = () => {
     const userId = useGetUserId();
-
+    
+    useEffect(() => {
+      ReactGA.pageview(window.location.pathname)
+    }, [])
     const { data: scores, isLoading, refetch } = useQuery(
         ["scores"], () => {
             return axios.get(

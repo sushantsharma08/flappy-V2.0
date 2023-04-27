@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router-dom"
+import ReactGA from "react-ga";
+
+
 
 function Authentication() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname)
+  }, [])
   return (
     <div className='authentication'>
       <Login />
