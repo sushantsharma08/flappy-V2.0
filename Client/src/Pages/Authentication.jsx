@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router-dom"
@@ -113,7 +113,7 @@ const Form = (props) => {
       <h1 className='auth_title' style={{ color: "#9E92CC" }}>{props.title}</h1>
       <hr />
       <form className='auth_form' onSubmit={props.onSubmit}>
-        <div style={{marginTop:"1rem"}}>
+        <div style={{ marginTop: "1rem" }}>
           <div className='auth_inputFields'>
             <label className='auth_label' htmlFor="username">Username</label>
 

@@ -23,12 +23,12 @@ const Game = () => {
   const [objPos, setobjPos] = useState(WALL_WIDTH)
   const [Score, setScore] = useState(0);
   const [HighScore, setHighScore] = useState(0);
-  const [cookies, setCookies] = useCookies(["access_token"]); 
+  const [cookies, setCookies] = useCookies(["access_token"]);
   const handler = () => {
     if (!isStart) setIsStart(true)
     if (birdpos < BIRD_HEIGHT + 70) setBirdpos(70);
     setBirdpos((birdpos) => birdpos - 70);
-  }  
+  }
 
   useEffect(() => {
     let intVal;
@@ -149,8 +149,8 @@ const Home = styled.div`
   margin-top:2rem;
   flex-direction:column;
   `;
-  
-  const Background = styled.div`
+
+const Background = styled.div`
   position:relative;
   background-repeat:no-repeat;
   background-size: ${props => props.width}px ${props => props.height}px ;
