@@ -55,6 +55,7 @@ nav{
   font-weight: 600;
   background: -webkit-linear-gradient(-45deg,#b5e48c, #99d98c,#76c893,#34a0a4,#168aad);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 ul{
