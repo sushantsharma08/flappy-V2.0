@@ -21,6 +21,10 @@
 ::-webkit-scrollbar{
   width:7px
 }
+nav{
+  display: flex;
+  align-items: center;
+}
 
 
 .card{
