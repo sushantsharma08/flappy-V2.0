@@ -9,9 +9,9 @@
   min-height: 100vh;
   background-color: rgb(0, 0, 0);
 }
-.game{
-  width: 90vw;
-}
+ .game{
+  width: 100vw;
+} 
 .scoreboard{
   height: 70vh;
   width: 50vw;
