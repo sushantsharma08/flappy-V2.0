@@ -26,11 +26,11 @@ const Navbar = () => {
       </div>
       <nav ref={navRef}>
         <ul>
-          <Link className='li' to="/">Game</Link>
-          <Link className='li' to="/scoreboard">Scoreboard</Link>
+          <Link className='li' to="/" onClick={showNavbar}>Game</Link>
+          <Link className='li' to="/scoreboard" onClick={showNavbar}>Scoreboard</Link>
           {!cookies.access_token ?
             <Link className='li' to="/auth">
-              <button className='login'>Login/Signup</button>
+              <button className='login' onClick={showNavbar}>Login/Signup</button>
             </Link> : (
               <button className='logout'
                 onClick={Logout}>LogOut</button>

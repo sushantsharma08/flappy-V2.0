@@ -12,7 +12,7 @@ const BIRD_WIDTH = 40;
 const GRAVITY = 8;
 const OBJ_WIDTH = 52;
 const OBJ_GAP = 160;
-const OBJ_SPEED = 5;
+let OBJ_SPEED = 5;
 
 
 
@@ -53,6 +53,7 @@ const Game = () => {
       if (isStart) setScore((score) => score + 1);
       setobjPos(WALL_WIDTH);
       setobjHeight(Math.floor(Math.random() * (WALL_HEIGHT - OBJ_GAP)));
+      OBJ_SPEED=OBJ_SPEED+0.5;
     }
   }, [isStart, objPos]);
 
@@ -71,6 +72,7 @@ const Game = () => {
         setHighScore(Score);
         console.log(HighScore);
       }
+      OBJ_SPEED=5
       setIsStart(false);
       setBirdpos(300);
       updateScore();
