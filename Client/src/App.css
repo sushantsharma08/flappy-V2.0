@@ -171,11 +171,11 @@ hr {
   /* background-color: blueviolet; */
 }
 
-.score_list {
+/* .score_list {
   height: 70vh;
   width: 50vw;
   overflow-y: scroll;
-}
+} */
 
 .scoreboard {
   position: relative;
@@ -217,6 +217,10 @@ hr {
 @media screen and (max-width:560px) {
   .scoreboard {
     width: 90vw;
+  }
+  .card{
+    min-width: max-content;
+
   }
 
   .game {

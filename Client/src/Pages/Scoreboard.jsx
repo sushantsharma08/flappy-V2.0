@@ -58,12 +58,12 @@ const Scoreboard = () => {
 
                     {scores.map((score, index) =>
                         <div className='card' style={{ backgroundColor:"black", border: score.userId === userId ? "1px solid green" : "default" }} key={score?._id}>
-                            <span >{index + 1}</span>
-                            <span className="name">
+                            <span className='score-span '>{index + 1}</span>
+                            <span className="score-span name">
                                 <h3>{score?.name} </h3>
                             </span>
 
-                            <span className="score">
+                            <span className="score-span score">
                                 <h2>{score?.score}</h2>
                             </span>
 
