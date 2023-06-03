@@ -5,7 +5,7 @@ import { useGetUserId } from '../hooks/useGetUserId';
 import { useCookies } from 'react-cookie'
 
 
-const WALL_HEIGHT = 600;
+const WALL_HEIGHT = 450;
 const WALL_WIDTH = 400;
 const BIRD_HEIGHT = 30;
 const BIRD_WIDTH = 40;
